@@ -1,6 +1,6 @@
-# Project information
-* Project name: Iptables-config                            	
-* Project Author:  
+# Project informations
+* Name: Iptables-config                            	
+* Author:  
 [mathys-l](https://github.com/mathys-l) and [Erglug](https://github.com/Erglug)
 * Version Project: Version 0.1.0                                     	
 * License: [GNU Affero General Public License v3.0](https://iptables-config.me/LICENSE)    	
@@ -8,30 +8,30 @@
 
 
 # Changelogs:
-V1- initial realease
+v1.0 - initial release
 
 
-# Table of Contents:
-1. System Usages and Instruction
-2. Bug and Issue
+# Summary:
+1. System usage and instructions
+2. Bugs and issues
 3. Contact
 
 
-# Usages and Instructions
+# Usage and instructions
 
-1. Requirment:   
-* Launch script in root/ sudo  
-* Have iptables package   
-* Have whiptail package
+1. Requirements:   
+* Launch the script in root/sudo  
+* Have iptables package installed   
+* Have whiptail package installed
 
-2. OS optimised:  
+2. OS-optimized:  
 Ubuntu, Debian, CentOS.  
-For other Linux distribution or incompatible distribution open an [issue](https://github.com/mathys-l/iptables-config/issues)
+For other Linux distributions or incompatible distributions, open an [issue](https://github.com/mathys-l/iptables-config/issues).  
 
 ### Os board
 * ✔️: Supported
-* 🟡: Need Test
-* ❌: Not Supported  
+* 🟡: Need test
+* ❌: Not supported  
 
 | Distribution | Version | Supported |
 |--------------|---------|-----------|
@@ -50,26 +50,26 @@ For other Linux distribution or incompatible distribution open an [issue](https:
 |              | 8   | ✔️           |
 |Other         |     |❌            |
 
-##### Help community and test version with no test and open an [issue](https://github.com/mathys-l/iptables-config/issues) for say if work or not
+##### Help the community and open an [issue](https://github.com/mathys-l/iptables-config/issues) showing your own tests.
 
-3. Running code:  
+3. Installation script:  
 `sudo curl --tlsv1.3 https://raw.githubusercontent.com/mathys-l/iptables-config/master/iptables-config-launcher.sh | sudo bash`
 
 4. Special:  
-For offline usage (secure the system before connecting it to the network) - hight security purpose.  
-You can find and download all script individual on us [website](https://iptables-config.me#download)
+For offline usage (secure the system before connecting it to the network) - high security purpose.  
+You can find and download each script on our [website](https://iptables-config.me#download)
 
-# Bug and Issue
+# Bugs and issues
 
 5. Bugs notes:  
-No bug know
+No known bugs.
 
 6. Know issue  
-### If you found error/ language misstake, please open an [issue](https://github.com/mathys-l/iptables-config/issues) or modify as you'r own file and create [pulls requests](https://github.com/mathys-l/iptables-config/pulls).
-No issue know. 
+### If you found an error or a language mistake, please open an [issue](https://github.com/mathys-l/iptables-config/issues) or fix it yourself and create a [pull request](https://github.com/mathys-l/iptables-config/pulls).
+No known issues.
 # Contact
 
-For contact us please use  
+To contact us, please use :
 * [Discord](https://discord.gg/JtBfSCAgmb)
 * [Mail](mailto:contact@iptables-config.me)
 
@@ -77,5 +77,5 @@ For contact us please use
 All links:  
 * [Discord](https://discord.gg/JtBfSCAgmb)
 * [Website](https://iptables-config.me)
-* [Script's GitHub](https://github.com/mathys-l/iptables-config/)
-* [Website's Github](https://github.com/mathys-l/iptables-config_website/)
+* [Script GitHub](https://github.com/mathys-l/iptables-config/)
+* [Website Github](https://github.com/mathys-l/iptables-config_website/)

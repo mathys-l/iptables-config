@@ -340,19 +340,7 @@ echo " - Custom port outgoing: [OK]"
 echo " - Firewall config: [OK]"' >>./firewall
 
 read -p "Do you want save this configuration? (y/n): " REP13
-if [ "$REP13" == "n" ] || [ "$REP13" == "no" ] || [ "$REP13" == "N" ] || [ "$REP13" == "No" ]; then
-   if [ "$hasconfig" == "true" ]; then
-      #if old configuration exist setup old configuration
-      sudo rm -rf /etc/init.d/firewall
-      sudo mv /etc/backup-iptable-config/firewall /etc/init.d/firewall
-      echo "Configuration cancel. Old configuration have been setup."
-   else
-      #if remove void file
-      sudo rm -rf /etc/init.d/firewall
-      sudo rm -rf /etc/backup-iptable-config/
-      echo "Configuration cancel."
-   fi
-else
+if [ "$REP13" == "y" ] || [ "$REP13" == "yes" ] || [ "$REP13" == "Y" ] || [ "$REP13" == "Yes" ]; then
    line=$(head -n 1 /etc/os-release)
    case $line in
    'NAME="Ubuntu"')
@@ -403,6 +391,19 @@ else
    esac
 
    echo "Configuration finish"
+fi
+else
+
+if [ "$hasconfig" == "true" ]; then
+   #if old configuration exist setup old configuration
+   sudo rm -rf /etc/init.d/firewall
+   sudo mv /etc/backup-iptable-config/firewall /etc/init.d/firewall
+   echo "Configuration cancel. Old configuration have been setup."
+else
+   #if remove void file
+   sudo rm -rf /etc/init.d/firewall
+   sudo rm -rf /etc/backup-iptable-config/
+   echo "Configuration cancel."
 fi
 
 read -p "Do you want reboot this machine? (y/n): " REP14

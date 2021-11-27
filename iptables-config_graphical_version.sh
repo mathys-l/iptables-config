@@ -341,18 +341,7 @@ echo " - Custom port outgoing: [OK]"
 echo " - Firewall config: [OK]"' >>./firewall
 
 if (whiptail --title "Save configuration" --yesno "Do you want save you'r configuration?" 10 60); then
-   if [ "$hasconfig" == "true" ]; then
-      #if old configuration exist setup old configuration
-      sudo rm -rf /etc/init.d/firewall
-      sudo mv /etc/backup-iptable-config/firewall /etc/init.d/firewall
-      whiptail --msgbox "Configuration cancel. Old configuration have been setup." 10 100
-   else
-      #if remove void file
-      sudo rm -rf /etc/init.d/firewall
-      sudo rm -rf /etc/backup-iptable-config/
-      whiptail --msgbox "Configuration cancel." 10 100
-   fi
-else
+
    line=$(head -n 1 /etc/os-release)
    case $line in
    'NAME="Ubuntu"')
@@ -402,6 +391,18 @@ else
 
    esac
    whiptail --msgbox "Configuration finish and save." 10 100
+else
+   if [ "$hasconfig" == "true" ]; then
+      #if old configuration exist setup old configuration
+      sudo rm -rf /etc/init.d/firewall
+      sudo mv /etc/backup-iptable-config/firewall /etc/init.d/firewall
+      whiptail --msgbox "Configuration cancel. Old configuration have been setup." 10 100
+   else
+      #if remove void file
+      sudo rm -rf /etc/init.d/firewall
+      sudo rm -rf /etc/backup-iptable-config/
+      whiptail --msgbox "Configuration cancel." 10 100
+   fi
 fi
 
 if (whiptail --title "Reboot" --yesno "Do you reboot you'r machine?" 10 60); then

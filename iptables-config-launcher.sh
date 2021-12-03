@@ -33,25 +33,25 @@ if [ $exitstatus = 0 ]; then
    if [ "$OPTION" = "1" ]; then
       if [ -e ./iptables-config.sh ]; then
          sudo rm -rf ./iptables-config.sh
-         sudo curl --tlsv1.3 -L -L https://iptables-config.me/assets/download/iptables-config_graphical_version.sh | sudo bash
+         sudo curl --tlsv1.3 -L https://raw.githubusercontent.com/mathys-l/iptables-config/master/iptables-config_graphical_version.sh | sudo bash
       else
-         sudo curl --tlsv1.3 -L -L https://iptables-config.me/assets/download/iptables-config_graphical_version.sh | sudo bash
+         sudo curl --tlsv1.3 -L https://raw.githubusercontent.com/mathys-l/iptables-config/master/iptables-config_graphical_version.sh | sudo bash
       fi
    fi
    if [ "$OPTION" = "2" ]; then
       if [ -e ./iptables-config.sh ]; then
          sudo rm -rf ./iptables-config.sh
-         sudo curl --tlsv1.3 -L -L https://iptables-config.me/assets/download/iptables-config_console_version.sh | sudo bash
+         sudo curl --tlsv1.3 -L https://raw.githubusercontent.com/mathys-l/iptables-config/master/iptables-config_console_version.sh | sudo bash
       else
-         sudo curl --tlsv1.3 -L -L https://iptables-config.me/assets/download/iptables-config_console_version.sh | sudo bash
+         sudo curl --tlsv1.3 -L https://raw.githubusercontent.com/mathys-l/iptables-config/master/iptables-config_console_version.sh | sudo bash
       fi
    fi
    if [ "$OPTION" = "3" ]; then
       if [ -e ./iptables-config-backup.sh ]; then
          sudo rm -rf ./iptables-config-backup.sh
-         sudo curl --tlsv1.3 -L https://iptables-config.me/assets/download/iptables-config-backup.sh | sudo bash
+         sudo curl --tlsv1.3 -L https://raw.githubusercontent.com/mathys-l/iptables-config/master/iptables-config-backup.sh | sudo bash
       else
-         sudo curl --tlsv1.3 -L https://iptables-config.me/assets/download/iptables-config-backup.sh | sudo bash
+         sudo curl --tlsv1.3 -L https://raw.githubusercontent.com/mathys-l/iptables-config/master/iptables-config-backup.sh | sudo bash
       fi
    fi
 fi

@@ -270,16 +270,16 @@ fi
 
 while [ "$Ip" != "end" ]; do
    Ip=$(whiptail --title "Ip block" --inputbox "Would you want blacklist an ip? (if you don't want add click on 'cancel')" 10 60 3>&1 1>&2 2>&3)
-
    exitstatus=$?
    if [ $exitstatus = 0 ]; then
       re='^(0*(1?[0-9]{1,2}|2([0-4][0-9]|5[0-5]))\.){3}'
       re+='0*(1?[0-9]{1,2}|2([‌​0-4][0-9]|5[0-5]))$'
-
       if [[ "$Ip" =~ $re ]]; then
          sudo echo "
 iptables -A INPUT -s $REP9 -j DROP" >>./firewall
          whiptail --msgbox "Ip $Ip succefully added." 10 100
+      else
+         whiptail --msgbox "IP incorect, please type correct ip." 10 100
       fi
    else
       Ip="end"
@@ -304,6 +304,8 @@ iptables -t filter -A INPUT -p udp --dport $PortIn -j ACCEPT" >>./firewall
          else
             whiptail --msgbox "Port incorect, please type correct port." 10 100
          fi
+      else
+         whiptail --msgbox "Port incorect, please type correct port." 10 100
       fi
    else
       PortIn="end"
@@ -328,6 +330,8 @@ iptables -t filter -A OUTPUT -p udp --dport $PortOu -j ACCEPT" >>./firewall
          else
             whiptail --msgbox "Port incorect, please type correct port." 10 100
          fi
+      else
+         whiptail --msgbox "Port incorect, please type correct port." 10 100
       fi
    else
       PortOu="end"
@@ -405,6 +409,6 @@ else
    fi
 fi
 
-if (whiptail --title "Reboot" --yesno "Do you reboot you'r machine?" 10 60); then
+if (whiptail --title "Reboot" --yesno "Do you want reboot this machine?" 10 60); then
    sudo reboot
 fi

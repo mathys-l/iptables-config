@@ -119,7 +119,10 @@ if [ -e ./firewall ]; then
 else
    sudo touch ./firewall
 fi
-
+   START="0"
+while [ "$START" = 0 ]; do
+   START=$"1"
+done
 sudo echo '#!/bin/bash
 
 ### BEGIN INIT INFO
@@ -178,11 +181,12 @@ echo " - Forbidden any incoming connection: [OK]"
 iptables -t filter -P OUTPUT DROP
 echo " - Forbidden any outgoing connection: [OK]"' >>./firewall
    fi
+done
 
-   read -p "Do you want allow DNS, FTP, HTTP, NTP requests on the outgoing connection {Using port 20, 21, 80, 53, 123}? (y/n): " REP1
+read -p "Do you want allow DNS, FTP, HTTP, NTP requests on the outgoing connection {Using port 20, 21, 80, 53, 123}? (y/n): " REP1
 
-   if [ "$REP1" = "y" ] || [ "$REP1" = "yes" ] || [ "$REP1" = "Y" ] || [ "$REP1" = "Yes" ]; then
-      sudo echo '
+if [ "$REP1" = "y" ] || [ "$REP1" = "yes" ] || [ "$REP1" = "Y" ] || [ "$REP1" = "Yes" ]; then
+   sudo echo '
 #Allow DNS, FTP, HTTP, NTP 
 iptables -t filter -A OUTPUT -p tcp --dport 20 -j ACCEPT
 iptables -t filter -A OUTPUT -p tcp --dport 21 -j ACCEPT
@@ -191,8 +195,7 @@ iptables -t filter -A OUTPUT -p udp --dport 53 -j ACCEPT
 iptables -t filter -A OUTPUT -p tcp --dport 53 -j ACCEPT
 iptables -t filter -A OUTPUT -p udp --dport 123 -j ACCEPT
 echo " - Allow DNS, FTP, HTTP, NTP request: [OK]"' >>./firewall
-   fi
-done
+fi
 
 read -p "Do you want allow loopback requests on the incoming and outgoing connection {Using port lo}? (y/n): " REP2
 

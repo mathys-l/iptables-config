@@ -9,6 +9,11 @@
 # github-link: 'https://github.com/mathys-l/Iptables-config'   #
 ################################################################
 
+# check for sudo
+if ! [ -x "$(command -v iptables)" ]; then
+   echo "Please install iptables for use this script."
+   exit 1
+fi
 # check run in sudo
 if [ "$EUID" -ne 0 ]; then
    echo "Please run script with sudo"
@@ -145,7 +150,6 @@ iptables -t filter -X
 echo " - Empty rules: [OK]"' >>./firewall
 
 read -p "Do you want allow the basic ssh port on the incoming connection {Using port 22}? (y/n): " REP
-while [ "$REP" != "n" ] || [ "$REP" = "y" ] || [ "$REP" = "yes" ] || [ "$REP" = "Y" ] || [ "$REP" = "Yes" ]; do
    if [ "$REP" = "y" ] || [ "$REP" = "yes" ] || [ "$REP" = "Y" ] || [ "$REP" = "Yes" ]; then
       sudo echo '
 # Allow base ssh port
@@ -181,7 +185,6 @@ echo " - Forbidden any incoming connection: [OK]"
 iptables -t filter -P OUTPUT DROP
 echo " - Forbidden any outgoing connection: [OK]"' >>./firewall
    fi
-done
 
 read -p "Do you want allow DNS, FTP, HTTP, NTP requests on the outgoing connection {Using port 20, 21, 80, 53, 123}? (y/n): " REP1
 

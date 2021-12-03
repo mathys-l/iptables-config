@@ -9,6 +9,11 @@
 # github-link: 'https://github.com/mathys-l/Iptables-config'   #
 ################################################################
 
+# check for sudo
+if ! [ -x "$(command -v sudo)" ]; then
+   echo "Please install sudo for use this script."
+   exit 1
+fi
 clear
 
 # check run in sudo

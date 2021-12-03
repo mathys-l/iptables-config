@@ -8,6 +8,13 @@
 # license-notice: 'https://iptables-config.me/LICENSE'         #
 # github-link: 'https://github.com/mathys-l/Iptables-config'   #
 ################################################################
+
+# check for sudo
+if ! [ -x "$(command -v sudo)" ]; then
+   echo "Please install sudo for use this script."
+   exit 1
+fi
+
 # check run in sudo
 if [ "$EUID" -ne 0 ]; then
     echo "Please run script with sudo"

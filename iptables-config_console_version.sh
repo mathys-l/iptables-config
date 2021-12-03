@@ -124,7 +124,7 @@ if [ -e ./firewall ]; then
 else
    sudo touch ./firewall
 fi
-   START="0"
+START="0"
 while [ "$START" = 0 ]; do
    START=$"1"
 done
@@ -150,8 +150,8 @@ iptables -t filter -X
 echo " - Empty rules: [OK]"' >>./firewall
 
 read -p "Do you want allow the basic ssh port on the incoming connection {Using port 22}? (y/n): " REP
-   if [ "$REP" = "y" ] || [ "$REP" = "yes" ] || [ "$REP" = "Y" ] || [ "$REP" = "Yes" ]; then
-      sudo echo '
+if [ "$REP" = "y" ] || [ "$REP" = "yes" ] || [ "$REP" = "Y" ] || [ "$REP" = "Yes" ]; then
+   sudo echo '
 # Allow base ssh port
 iptables -t filter -A INPUT -p tcp --dport 22 -j ACCEPT
 echo " - Allow SSH on port 22: [OK]"
@@ -169,8 +169,8 @@ echo " - Forbidden any incoming connection: [OK]"
 # Forbidden any outgoing connection
 iptables -t filter -P OUTPUT DROP
 echo " - Forbidden any outgoing connection: [OK]"' >>./firewall
-   else
-      sudo echo '
+else
+   sudo echo '
 # Keep established connections
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
@@ -184,7 +184,7 @@ echo " - Forbidden any incoming connection: [OK]"
 # Forbidden any outgoing connection
 iptables -t filter -P OUTPUT DROP
 echo " - Forbidden any outgoing connection: [OK]"' >>./firewall
-   fi
+fi
 
 read -p "Do you want allow DNS, FTP, HTTP, NTP requests on the outgoing connection {Using port 20, 21, 80, 53, 123}? (y/n): " REP1
 
@@ -397,19 +397,19 @@ if [ "$REP13" == "y" ] || [ "$REP13" == "yes" ] || [ "$REP13" == "Y" ] || [ "$RE
    esac
 
    echo "Configuration finish"
-fi
-else
 
-if [ "$hasconfig" == "true" ]; then
-   #if old configuration exist setup old configuration
-   sudo rm -rf /etc/init.d/firewall
-   sudo mv /etc/backup-iptable-config/firewall /etc/init.d/firewall
-   echo "Configuration cancel. Old configuration have been setup."
 else
-   #if remove void file
-   sudo rm -rf /etc/init.d/firewall
-   sudo rm -rf /etc/backup-iptable-config/
-   echo "Configuration cancel."
+   if [ "$hasconfig" == "true" ]; then
+      #if old configuration exist setup old configuration
+      sudo rm -rf /etc/init.d/firewall
+      sudo mv /etc/backup-iptable-config/firewall /etc/init.d/firewall
+      echo "Configuration cancel. Old configuration have been setup."
+   else
+      #if remove void file
+      sudo rm -rf /etc/init.d/firewall
+      sudo rm -rf /etc/backup-iptable-config/
+      echo "Configuration cancel."
+   fi
 fi
 
 read -p "Do you want reboot this machine? (y/n): " REP14
